@@ -26,3 +26,5 @@ window.onscroll = ()=>{
     menubar.classList.remove('bx-x');
     Navbar.classList.remove('active')
 }
+
+// Modal functionality removed - using CSS 3D Flip Cards instead
