@@ -211,6 +211,10 @@ section{
         width: 0;
     }
 }
+a {
+  text-decoration: none;
+}
+
  .btn{
     height: 100%;
     width: 15rem;
@@ -310,6 +314,27 @@ i:hover::after{
         scale: 1;
     }
 }
+i:hover::after{
+    top: 0;
+}
+.abt{
+    width: 30vw;
+    background: rgba(255,255,255,.1);
+    border: .2rem solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    filter: drop-shadow(0 0 8rem #ff00ee);
+    animation: Scale 1s ease forwards;
+    scale: 0;
+    animation-delay: 2s;
+}
+@keyframes Scale{
+    0%{
+        scale: 0;
+    }
+    100%{
+        scale: 1;
+    }
+}
 /* about section */
 .about{
     display: flex;
@@ -319,6 +344,20 @@ i:hover::after{
     padding-bottom: 6rem;
     gap: 2rem;
 }
+/* ABOUT IMAGE (FIXED) */
+.about-img{
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+    border: .2rem solid rgba(255,255,255,.3);
+    filter: drop-shadow(0 0 8rem #ff00ee);
+    transform: scale(0);
+}
+
+/* section.start-animation .about-img{
+    animation: scaleout 1s ease forwards;
+} */
+
 .title{
     font-size: 5rem;
     margin-bottom: 3rem;
@@ -422,6 +461,28 @@ section.start-animation .text-content2 .btn{
         opacity: 1;
     }
 }
+.about-img{
+    width: 300px;
+    height: auto;
+    border-radius: 50%;
+    border: .2rem solid rgba(255,255,255,.3);
+    filter: drop-shadow(0 0 8rem #ff00ee);
+    transform: scale(0);
+}
+
+section.start-animation .about-img{
+    animation: scaleout 1s ease forwards;
+}
+
+@keyframes scaleout{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+
 /* education section */
 .row{
     display: flex;
@@ -500,6 +561,189 @@ section.start-animation .column h2{
 .content p{
     font-size: 1.5rem;
 }
+/* project */
+/* PROJECT SECTION */
+.projects{
+    padding: 10rem 6%;
+    background: #0f0a0a;
+    overflow: hidden;
+}
+
+.title{
+    font-size: 5rem;
+    text-align: center;
+    margin-bottom: 5rem;
+}
+
+.title span{
+    color: #ff00ee;
+}
+
+/* SLIDER */
+.projects-slider{
+    width: 100%;
+    overflow: hidden;
+}
+
+.projects-track{
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    animation: projectScroll 45s linear infinite;
+}
+
+/* Pause scroll on hover */
+.projects-slider:hover .projects-track{
+    animation-play-state: paused;
+}
+
+/* CARD */
+.project-card{
+    width: 360px;
+    height: 460px;
+    perspective: 1000px;
+    position: relative;
+    background: transparent;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.project-card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 1.6rem;
+    border: 2px solid #ff00ee;
+    overflow: hidden;
+    background: linear-gradient(180deg,#1c122b,#0f0a0a);
+}
+
+.card-back {
+    transform: rotateY(180deg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(180deg,#0f0a0a,#1c122b);
+}
+
+.card-back h3 {
+    font-size: 2.2rem;
+    color: #ff00ee;
+    margin-bottom: 1.5rem;
+}
+
+.card-back p {
+    font-size: 1.35rem;
+    line-height: 1.6;
+    color: #fff;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    overflow-y: auto;
+    max-height: 250px;
+}
+
+.card-back p::-webkit-scrollbar {
+    width: 5px;
+}
+.card-back p::-webkit-scrollbar-thumb {
+    background: #ff00ee;
+    border-radius: 5px;
+}
+
+.github-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(90deg,#ff00ee,#b100ff);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    font-size: 1.4rem;
+    font-weight: 500;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.github-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 0, 238, 0.4);
+}
+
+/* IMAGE */
+.project-img{
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.project-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CONTENT */
+.project-body{
+    padding: 2rem;
+    height: calc(100% - 200px);
+    position: relative;
+    z-index: 2;
+}
+
+.project-body h3{
+    font-size: 2rem;
+    color: #ff00ee;
+    margin-bottom: 1rem;
+}
+
+.project-body p{
+    font-size: 1.45rem;
+    opacity: .9;
+}
+
+/* BUTTON BOTTOM RIGHT */
+.learn-btn{
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 1.3rem;
+    padding: .6rem 1.4rem;
+    border-radius: .6rem;
+    background: linear-gradient(90deg,#ff00ee,#b100ff);
+    color: #fff;
+    text-decoration: none;
+    z-index: 3;
+}
+
+/* SHADOW GLOW FOR INNER CARD */
+.project-card:hover .card-inner{
+    box-shadow: 0 0 2rem rgba(255,0,238,.6);
+    border-radius: 1.6rem;
+}
+
+/* AUTO SCROLL */
+@keyframes projectScroll{
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-50%);
+    }
+}
+
 /* skill-content */
 .wrapper{
     width: 100%;
@@ -756,4 +1000,79 @@ footer i{
     .input-box input{
         width: 100%;
     }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px #ff69b4, 0 0 40px #ff69b4;
+    border: 3px solid #ff00ee;
+}
+
+#modal-title {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+    color: #ff00ee;
+}
+
+#modal-description {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+#modal-tech-stack {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #ccc;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -10px;
+}
+
+.close-btn:hover {
+    color: #fff;
+}
+
+#modal-github {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+#modal-github:hover {
+    background-color: #555;
 }
