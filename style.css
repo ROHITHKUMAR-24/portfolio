@@ -630,8 +630,18 @@ section.start-animation .column h2{
     background: linear-gradient(180deg,#1c122b,#0f0a0a);
 }
 
+.card-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.project-card:hover .card-front {
+    pointer-events: none;
+}
+
 .card-back {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateZ(1px);
+    z-index: 1;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -675,6 +685,8 @@ section.start-animation .column h2{
     font-size: 1.4rem;
     font-weight: 500;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 10;
 }
 
 .github-btn:hover {
@@ -744,85 +756,89 @@ section.start-animation .column h2{
     }
 }
 
-/* skill-content */
-.wrapper{
+/* Skills Grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5rem;
-    flex-wrap: wrap;
-}
-.skill-title{
-    font-size: 2.4rem;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: translateY(-100px);
-}
-section.start-animation .skill-title{
-    animation: top 1s ease forwards;
-    animation-delay: 1.2s;
-}
-.skill-content{
-    width: 100%;
-    flex:  1 1 30rem;
-}
-.skill-box{
-    height: 100%;
-    width: 100%;
-    padding: 8rem 4rem;
-    background: rgba(255,255,255,.1);
-    border-radius: 1rem;
-}
-.skill-box1{
-    opacity: 0;
-    transform: translateX(-100px);
-}
-section.start-animation .skill-box1{
-    animation:  Right 1s ease forwards;
-    animation-delay: 1.2s;
-}
-.skill-box2{
-    opacity: 0;
-    transform: translateX(100px);
-}
-section.start-animation .skill-box2{
-    animation:Left 1s ease forwards;
-    animation-delay: 1.4s;
-}
-.single-skill{
-    display: flex;
-    justify-content: space-between;
-    margin: 2rem 0;
-}
-.single-skill span{
-    font-size: 1.6rem;
+    margin-top: 2rem;
 }
 
-.bar-side{
-    background: #111;
-    height: 1rem;
-    border-radius: 50rem;
-    position: relative;
-    overflow: hidden;
+.skill-category {
+    background: rgba(255, 255, 255, 0.03);
+    border: .2rem solid rgba(255, 255, 255, 0.1);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    opacity: 0;
+    transform: translateY(100px);
 }
-.bar{
-    position: absolute;
-    height: 100%;
-    background: #ff00ee;
+
+section.start-animation .skill-category {
+    animation: Bottom 1s ease forwards;
+    animation-delay: 1.2s;
 }
-.bar-1{
-    width:50%;
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255, 0, 238, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 1.5rem rgba(255, 0, 238, 0.2);
 }
-.bar-2{
-    width: 80%;
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
 }
-.bar-3{
-    width: 70%;
+
+.category-header i {
+    font-size: 2.4rem;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(255, 0, 238, 0.2), rgba(177, 0, 255, 0.2));
+    border: .1rem solid rgba(255, 0, 238, 0.4);
+    padding: 1.2rem;
+    border-radius: 1.2rem;
+    box-shadow: inset 0 0 1rem rgba(255, 0, 238, 0.1);
 }
-.bar-4{
-    width: 60%;
+
+.category-header h3 {
+    font-size: 1.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1rem;
+    color: #fff;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.skill-tag {
+    background: rgba(255, 255, 255, 0.05);
+    border: .1rem solid rgba(255, 255, 255, 0.1);
+    color: #ddd;
+    padding: 0.8rem 1.6rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    letter-spacing: 0.05rem;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.skill-category:hover .skill-tag {
+    border-color: rgba(255, 0, 238, 0.3);
+}
+
+.skill-tag:hover {
+    background: linear-gradient(90deg, #ff00ee, #b100ff);
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 0 1rem rgba(255, 0, 238, 0.4);
+    transform: translateY(-2px);
 }
 /* contact section */
 section form{
